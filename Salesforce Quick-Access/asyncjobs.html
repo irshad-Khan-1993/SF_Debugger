@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="asyncjobs.css">
+    <title>Async Apex Jobs</title>
+</head>
+
+<body>
+    <script type="text/javascript" src="jquery_min.js"></script>
+    <script type="text/javascript" src="font_awesome_js.js"></script>
+    <script type="text/javascript" src="asyncjobs.js"></script>
+    <script type="text/javascript" src="jsforce.js"></script>
+    <div class="d_outer">
+        <div class="d_top_down d_top">
+            <div class="top_c">
+                <div class="dropdown_container">
+                    <Button class="cta select top_select refresh_btn"><i class="refresh_btn_icon fa fa-refresh fa-lg fast-spin" aria-hidden="true"></i></Button>
+                </div>
+                <div class="top_userinfo_dv">
+                    <select class="cta select top_select job_options">
+                        <option value="All Jobs" selected>All Jobs</option>
+                    </select>
+                </div>
+                <div class="top_userinfo_dv">
+                    <select class="cta select top_select job_filter">
+                        <option value="1 Hour">1 Hour</option>
+                        <option value="Today">Today</option>
+                        <option value="24 Hours">24 Hours</option>
+                        <option value="Yesterday">Yesterday</option>
+                        <option value="This Week">This Week</option>
+                        <option value="This Month">This Month</option>
+                        <option value="Last 30 Days" selected>Last 30 Days</option>
+                    </select>
+                </div>
+                <div class="dropdown_container">
+                    <Button class="cta select top_select showing_jobs" disabled style="cursor: default  !important;border-radius: 0px !important;color:#6f8e74 !important">Showing [ 0 ]</Button>
+                </div>
+                <div class="top_userinfo_dv">
+                    <Button class="cta select top_select total_jobs" disabled style="cursor: default !important;border-radius: 0px !important;color:#9b9b9b !important">Total Jobs [ 0 ]</Button>
+                </div>
+            </div>
+        </div>
+        <div class="d_top_down d_down">
+            <div class="down_c">
+                <table class="table_1">
+                    <thead class="thead_1">
+                        <tr class="thead_1_tr">
+                            <th class="th_1 th_1_1">
+                                Id
+                            </th>
+                            <th class="th_1 th_1_2">
+                                Job Type
+                            </th>
+                            <th class="th_1 th_1_2">
+                                Created
+                            </th>
+                            <th class="th_1 th_1_2">
+                                Created By
+                            </th>
+                            <th class="th_1 th_1_2">
+                                Apex Class
+                            </th>
+                            <th class="th_1 th_1_2">
+                                Method
+                            </th>
+                            <th class="th_1 th_1_3">
+                                Status
+                            </th>
+                            <th class="th_1 th_1_3">
+                                Processed Items
+                            </th>
+                            <th class="th_1 th_1_5">
+                                Completed
+                            </th>
+                            <th class="th_1 th_1_6">
+                                
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody_1">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="snackbar-container">
+        <div class="snackbar">Copied.</div>
+    </div>
+    <div class="spinner-div">
+        <img src="/images/loadercircleteal.svg" />
+    </div>
+</body>
+</html>

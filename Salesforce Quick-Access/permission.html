@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="permission.css">
+	<title>Permissions</title>
+</head>
+<body>
+	<script type="text/javascript" src="jquery_min.js"></script>
+	<script type="text/javascript" src="font_awesome_js.js"></script>
+	<script type="text/javascript" src="permission.js"></script>
+	<div class="outer">
+        <div class="c">
+            <div class="tWrap">
+                <div class="tWrap__head">
+                    <table class="table_h noselect">
+                        <thead class="thead_h">
+                            <tr class="tr_h">
+                                <th class="th th_static total" data-id="label">
+                                    FETCHING...
+                                </th>
+                                <th class="th th_static" data-id="name">
+                                    <div class="dv_session">
+                                        <button class="chng-session">All</button>
+                                    </div>
+                                </th>
+                                <th class="th th_static" data-id="type">
+                                    <div class="dv_sessions">
+                                        <select class="select_sessions">
+                                            <option class="All" value="All">All</option>
+                                            <option class="Custom" value="Custom">Custom</option>
+                                            <option class="Standard" value="Standard">Standard</option>
+                                        </select>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr class="tr_h">
+                                <th class="th th_static" data-id="label">
+                                    <input class="inp inp-1" data-search="Label" placeholder="Search In Labels" />
+                                </th>
+                                <th class="th th_static" data-id="name">
+                                    <input class="inp inp-2" data-search="Name" placeholder="Search Api Names"/>
+                                </th>
+                                <th class="th th_static" data-id="type">
+                                    <input class="inp inp-3" data-search="IsCustom" placeholder="Search In Types"/>
+                                </th>
+                            </tr>
+                            <tr class="tr_h">
+                                <th class="th th_field" data-id="Label">Label <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i></th>
+                                <th class="th th_field" data-id="Name">Name <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i></th>
+                                <th class="th th_field" data-id="IsCustom">Type <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="tWrap__body custom-scrollbar">
+                    <table class="table noselect">
+                        <tbody class="tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="snackbar-container">
+        <div class="snackbar">Copied.</div>
+    </div>
+    <div class="spinner-div">
+        <img src="/images/loadingbars.svg"/>
+    </div>
+</body>
+</html>

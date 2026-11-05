@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="sweetalert2min.css">
+    <link rel="stylesheet" type="text/css" href="debuglogs.css">
+    <title>Debug Logs</title>
+</head>
+
+<body>
+    <script type="text/javascript" src="jquery_min.js"></script>
+    <script type="text/javascript" src="font_awesome_js.js"></script>
+    <!-- load ace and code modes -->
+    <script type="text/javascript" src="ace/ace.js"></script>
+    <script type="text/javascript" src="ace/mode/mode-apex.min.js"></script>
+    <script type="text/javascript" src="ace/mode/mode-javascript.min.js"></script>
+    <!-- load ace and code modes -->
+
+    <!-- load ace themes -->
+    <script type="text/javascript" src="ace/theme/theme-ambiance.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-chaos.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-chrome.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-cloud9_day.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-cloud9_night.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-cloud9_night_low_color.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-clouds.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-clouds_midnight.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-cobalt.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-crimson_editor.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-dawn.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-dracula.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-dreamweaver.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-eclipse.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-github.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-github_dark.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-gob.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-gruvbox.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-gruvbox_dark_hard.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-gruvbox_light_hard.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-idle_fingers.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-iplastic.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-katzenmilch.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-kr_theme.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-kuroir.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-merbivore.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-merbivore_soft.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-monokai.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-mono_industrial.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-nord_dark.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-one_dark.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-pastel_on_dark.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-solarized_dark.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-sqlserver.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-terminal.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-textmate.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-tomorrow.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-tomorrow_night.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-tomorrow_night_blue.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-tomorrow_night_bright.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-tomorrow_night_eighties.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-twilight.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-vibrant_ink.min.js"></script>
+    <script type="text/javascript" src="ace/theme/theme-xcode.min.js"></script>
+    <!-- load ace themes -->
+
+    <script type="text/javascript" src="jszip.min.js"></script>
+    <script type="text/javascript" src="FileSavermin.js"></script>
+    <script type="text/javascript" src="Draggable.js"></script>
+    <script type="text/javascript" src="TweenMax.js"></script>
+    <script type="text/javascript" src="sweetalert2allmin.js"></script>
+    <script type="text/javascript" src="react-log-viewer.bundle.js"></script>
+    <script type="text/javascript" src="debuglogs.js"></script>
+    <script type="text/javascript" src="jsforce.js"></script>
+    <div class="d_outer">
+        <div class="d_top_down d_top">
+            <div class="top_c">
+                <div class="top_left_group">
+                    <div class="top_user_control">
+                        <select class="cta select top_select" title="Lookup mode: by Name or Username/ID">
+                            <option value="NAME" selected>NAME</option>
+                            <option value="USERNAME">USERNAME</option>
+                        </select>
+                        <div class="top_userinfo_wrap">
+                            <i class="fa fa-user top_user_icon" title="Click or press Enter to search user"></i>
+                            <input class="cta inp top_userinfo_inp" placeholder="Search user (Enter)..."
+                                spellcheck="false" title="Enter user ID, username, or partial name and press Enter" />
+                        </div>
+                    </div>
+                    <div class="top_username_badge hide" title="User for which debug logs are created/viewed">
+                        <i class="fa fa-user-circle top_username_icon"></i>
+                        <span class="top_username_prefix">User:</span>
+                        <span class="top_username_text"></span>
+                    </div>
+                    <button class="cta btn top_createlog_btn" title="Create Debug Log / Trace Flag for this user">
+                        <i class="fa fa-plus-circle"></i> <span>Create Log</span>
+                    </button>
+                    <button class="cta btn top_filter_btn" title="Toggle Event Filters Sidebar">
+                        <i class="fa fa-sliders"></i> <span>Event Filters</span> <span class="filter_badge">All</span>
+                    </button>
+                    <button type="button" class="cta btn top_bw_btn" title="Toggle Black & White / Color Mode (Alt+B)">
+                        <i class="fa fa-adjust"></i> <span>B&W</span>
+                    </button>
+                    <button type="button" class="cta btn top_theme_btn" title="Toggle Dark / Light Theme">
+                        <i class="fa fa-moon-o"></i> <span>Dark</span>
+                    </button>
+                    <button type="button" class="cta btn top_download_all_btn" title="Download all saved Apex logs in a ZIP file">
+                        <i class="fa fa-file-archive-o"></i> <span>Download Zip</span>
+                    </button>
+                </div>
+
+                <div class="top_right_group">
+                    <div class="top_debugsearch_wrap">
+                        <i class="fa fa-search top_search_icon top_search_btn"
+                            title="Click or press Enter to search across all logs"></i>
+                        <input class="cta inp top_debugsearch_inp" placeholder="Search in all logs..."
+                            spellcheck="false" title="Search across all fetched logs for text (Press Enter)" />
+                        <i class="fa fa-times top_search_clear hide" title="Clear search"></i>
+                        <span class="search_kbd_hint" title="Press Enter to search">&#x23CE; Enter</span>
+                    </div>
+                    <select class="cta select top_limit_select" title="Fetch limit: number of logs to query per batch">
+                        <option value="20">20 Logs</option>
+                        <option value="50">50 Logs</option>
+                        <option value="100" selected>100 Logs</option>
+                        <option value="200">200 Logs</option>
+                        <option value="500">500 Logs</option>
+                    </select>
+                    <button class="cta btn top_fetchlog_btn"
+                        title="Fetch latest logs for this user (or current user if empty)">
+                        <i class="fa fa-refresh"></i> <span>Fetch Logs</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="d_top_down d_down">
+            <div class="down_c">
+                <!-- Event Filter Panel (Left) -->
+                <div class="tdowndv event_filter_panel">
+                    <div class="filter_panel_header">
+                        <div class="filter_header_title_row">
+                            <span class="filter_header_title"><i class="fa fa-filter"></i> Event Filters</span>
+                            <div class="filter_header_actions">
+                                <button type="button" class="btn_filter_action btn_select_all"
+                                    title="Select all events">All</button>
+                                <button type="button" class="btn_filter_action btn_clear_all"
+                                    title="Deselect all events">Clear</button>
+                                <button type="button" class="btn_collapse_filters" title="Hide Event Filters"><i
+                                        class="fa fa-chevron-left"></i></button>
+                            </div>
+                        </div>
+                        <div class="filter_traceflag_banner hide" id="filterTraceFlagBanner" title="Trace Flag Details">
+                        </div>
+                        <div class="filter_search_row">
+                            <i class="fa fa-search filter_search_icon"></i>
+                            <input type="text" class="filter_search_inp"
+                                placeholder="Search events (e.g. SOQL, DEBUG, FLOW)..." />
+                            <i class="fa fa-times filter_search_clear hide" title="Clear search"></i>
+                        </div>
+                        <div class="filter_presets_row">
+                            <span class="filter_preset_chip" data-preset="USER_DEBUG">USER_DEBUG</span>
+                            <span class="filter_preset_chip" data-preset="ERRORS">Errors</span>
+                            <span class="filter_preset_chip" data-preset="DATABASE">SOQL/DML</span>
+                            <span class="filter_preset_chip" data-preset="CALLOUTS">Callouts</span>
+                            <span class="filter_preset_chip chip_custom_preset" data-preset="CUSTOM" title="Click to apply saved Custom events filter. Checked/unchecked events update this preset automatically.">Custom</span>
+                            <span class="filter_preset_chip" data-preset="WORKFLOW">Workflow/Flows</span>
+                            <span class="filter_preset_chip" data-preset="APEX">Apex Code</span>
+                            <label class="filter_timestamp_chip" title="Toggle Timestamps (Checked = Show Timestamps)">
+                                <input type="checkbox" id="toggleTimestampCb" class="toggle_timestamp_cb" checked />
+                                <span>Timestamps</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter_panel_body">
+                        <!-- Categories and event checkboxes are dynamically populated by debuglogs.js -->
+                    </div>
+                </div>
+
+                <!-- Resizer 1 (Left / Center) -->
+                <div class="resizer resizer_left" id="resizerLeft"
+                    title="Drag to resize filters panel (Double-click to reset)"></div>
+
+                <!-- Log Content Viewer (Center) -->
+                <div class="tdowndv d_down_text_dv">
+                    <div class="viewer_toolbar">
+                        <div class="viewer_toolbar_left">
+                            <span class="filter_stats_badge">No log selected</span>
+                            <button type="button" class="viewer_error_jump_btn hide" title="Click to jump to next error in log">
+                                <i class="fa fa-exclamation-circle"></i> <span class="error_jump_text">0 Errors</span>
+                            </button>
+                        </div>
+                        <div class="viewer_toolbar_right">
+                            <div class="viewer_search_box">
+                                <i class="fa fa-search"></i>
+                                <input type="text" class="viewer_text_search_inp" placeholder="Find in log..." />
+                                <i class="fa fa-times viewer_text_search_clear hide" title="Clear search"></i>
+                            </div>
+                            <button class="viewer_btn toggle_tree_mode_btn is-active"
+                                title="Toggle between Formatted Objects View and Raw Text View">
+                                <i class="fa fa-sitemap"></i> <span class="btn_view_mode_text">Formatted</span>
+                            </button>
+                            <button class="viewer_btn toggle_all_nodes_btn"
+                                title="Expand or Collapse All Objects in view">
+                                <i class="fa fa-expand"></i> <span class="btn_expand_all_text">Expand All</span>
+                            </button>
+                            <button class="viewer_btn copy_log_btn" title="Copy visible log to clipboard">
+                                <i class="fa fa-clipboard"></i> <span class="btn_copy_text">Copy</span>
+                            </button>
+                            <button class="viewer_btn download_log_btn" title="Download log as file">
+                                <i class="fa fa-download"></i> <span class="btn_dl_text">Download</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="d_down_viewer_content" id="viewerContent" tabindex="0">
+                        <div class="viewer_empty_state">Select a log from the table on the right to view and filter
+                            events...</div>
+                    </div>
+                    <textarea class="d_down_textarea hide" spellcheck="false"
+                        placeholder="Select a log from the table on the right to view and filter events..."></textarea>
+                </div>
+
+                <!-- Resizer 2 (Center / Right) -->
+                <div class="resizer resizer_right" id="resizerRight"
+                    title="Drag to resize logs table (Double-click to reset)"></div>
+
+                <!-- Logs List Table (Right) -->
+                <div class="tdowndv d_down_logs_dv">
+                    <div class="logs_panel_header">
+                        <div class="logs_panel_title_wrap">
+                            <span class="logs_panel_title"><i class="fa fa-list"></i> <span
+                                    class="logs_panel_title_text">Apex Logs</span></span>
+                            <span class="logs_cache_badge hide" title="Number of logs saved in current session"><span
+                                    class="badge_count">0</span> <span class="badge_text_saved">saved</span></span>
+                        </div>
+                        <div class="logs_header_actions">
+                            <button type="button" class="panel_header_btn btn_group_selected hide"
+                                title="Group selected logs into an accordion folder">
+                                <i class="fa fa-folder"></i> <span class="btn_text_group">Group (<span
+                                        class="group_sel_count">0</span>)</span>
+                            </button>
+                            <button type="button" class="panel_header_btn btn_clear_cached_logs"
+                                title="Clear selected logs (or all saved logs if none selected)">
+                                <i class="fa fa-eraser"></i> <span class="btn_text_clear">Clear</span>
+                            </button>
+                            <button type="button" class="panel_header_btn btn_delete_server_logs"
+                                title="Delete selected logs from Salesforce server (or all if none selected)">
+                                <i class="fa fa-trash-o"></i> <span class="btn_text_del_server">Delete Org Logs</span>
+                            </button>
+                            <button type="button" class="btn_collapse_logs" title="Hide Logs Table"><i
+                                    class="fa fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="logs_table_wrapper">
+                        <table class="log_table">
+                            <thead class="log_table_head">
+                                <tr class="log_table_h_tr">
+                                    <th class="log_table_h col_srno" title="Serial Number">Sr. No.</th>
+                                    <th class="log_table_h col_checkbox" title="Select / Deselect all logs">
+                                        <input type="checkbox" class="log_master_checkbox" title="Select all logs" />
+                                    </th>
+                                    <th class="log_table_h col_length sortable_col" data-sort-key="LogLength"
+                                        title="Click to sort by Log Length">
+                                        <div class="sort_th_wrap">
+                                            <span>Length</span>
+                                            <i class="fa fa-sort sort_icon"></i>
+                                        </div>
+                                    </th>
+                                    <th class="log_table_h col_datetime sortable_col sorted_active"
+                                        data-sort-key="LastModifiedDate"
+                                        title="Sorted by Date Time (Ascending). Click to reverse.">
+                                        <div class="sort_th_wrap">
+                                            <span>Date Time</span>
+                                            <i class="fa fa-sort-asc sort_icon active"></i>
+                                        </div>
+                                    </th>
+                                    <th class="log_table_h col_operation">Operation</th>
+                                    <th class="log_table_h col_user">User</th>
+                                    <th class="log_table_h col_status">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="log_table_body">
+
+                            </tbody>
+                        </table>
+                        <div class="logs_load_more_wrap hide">
+                            <button type="button" class="btn_load_more_logs" title="Fetch older logs from Salesforce">
+                                <i class="fa fa-arrow-circle-o-down"></i> <span class="btn_text_load_more">Load Older
+                                    Logs</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Tab to re-open Event Filters when collapsed -->
+                <div class="floating_filters_tab" title="Click to show Event Filters">
+                    <i class="fa fa-chevron-right"></i>
+                    <span>Filters</span>
+                </div>
+
+                <!-- Floating Tab to re-open Logs Table when collapsed -->
+                <div class="floating_logs_tab" title="Click to show Logs Table">
+                    <i class="fa fa-chevron-left"></i>
+                    <span>Logs</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="small_popup_1 hide">
+        <div class="small_popup_1_box">
+            <div class="small_popup_1_box_heading_div">
+
+            </div>
+            <div class="small_popup_1_box_middle_div">
+                <table class="table_1">
+                    <thead class="thead_1">
+                        <tr class="thead_1_tr">
+                            <th class="th_1 th_1_1">
+                                Id
+                            </th>
+                            <th class="th_1 th_1_2">
+                                Name
+                            </th>
+                            <th class="th_1 th_1_3">
+                                Username
+                            </th>
+                            <th class="th_1 th_1_4">
+                                Profile
+                            </th>
+                            <th class="th_1 th_1_5">
+                                Email
+                            </th>
+                            <th class="th_1 th_1_6">
+                                Active
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody_1">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="small_popup_1_box_bottom_div">
+
+            </div>
+            <div class="small_popup_1_close_div">
+                <i class="close-icon_1 fa fa-times fa-lg" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    <!-- Apex Class Viewer Big Modal -->
+    <div class="apex_class_modal_backdrop hide">
+        <div class="apex_class_modal_box">
+            <div class="apex_class_modal_header">
+                <div class="apex_class_modal_header_left">
+                    <i class="fa fa-file-code-o apex_class_modal_icon"></i>
+                    <span class="apex_class_modal_title" tabindex="-1">ApexClass.cls</span>
+                    <span class="apex_modal_badge badge_type">Apex Class</span>
+                    <span class="apex_modal_badge badge_readonly"><i class="fa fa-lock"></i> Read-Only</span>
+                    <span class="apex_modal_badge badge_api_version">v59.0</span>
+                </div>
+                <div class="apex_class_modal_header_right">
+                    <button type="button" class="btn_modal_copy_code" title="Copy code to clipboard"><i class="fa fa-clone"></i> Copy Code</button>
+                    <button type="button" class="btn_modal_open_sf" title="Open in Salesforce Setup"><i class="fa fa-external-link"></i> Salesforce</button>
+                    <button type="button" class="btn_modal_close" title="Close (Esc)"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="apex_class_modal_body">
+                <div class="apex_class_modal_loading">
+                    <i class="fa fa-spinner fa-spin fa-2x"></i>
+                    <span class="apex_loading_text">Loading Apex Class...</span>
+                </div>
+                <div class="apex_class_modal_error hide">
+                    <i class="fa fa-exclamation-triangle fa-2x"></i>
+                    <div class="apex_class_error_text"></div>
+                </div>
+                <div id="apexClassAceEditor"></div>
+            </div>
+        </div>
+    </div>
+    <div class="snackbar-container">
+        <div class="snackbar">Copied.</div>
+    </div>
+    <div class="spinner-div">
+        <img src="/images/loadingthreedotsgray.svg" />
+    </div>
+</body>
+
+</html>

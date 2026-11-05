@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="objectpermission_ps.css">
+	<title>Object Permission - PermissionSets</title>
+</head>
+<body>
+	<script type="text/javascript" src="jquery_min.js"></script>
+	<script type="text/javascript" src="font_awesome_js.js"></script>
+    <script type="text/javascript" src="jsforce.js"></script>
+	<script type="text/javascript" src="objectpermission_ps.js"></script>
+	<div class="outer">
+        <div class="c">
+            <div class="tWrap">
+                <div class="tWrap__head">
+                    <table class="table_h noselect">
+                        <thead class="thead_h">
+                            <tr class="tr_h">
+                                <th class="th th_static" data-id="label">
+                                    <div class="dv_sessions">
+                                        <select class="dropdown objects_dropdown">
+                                            <option value="None">--None--</option>
+                                        </select>
+                                    </div>
+                                </th>
+                                <th class="th th_static" data-id="name">
+                                    <!-- <input class="inp obj_api_name" data-search="Name" placeholder="Object Api Name" disabled value="p66_Contractual_Balance__c"/> -->
+                                    <input class="inp obj_api_name" data-search="Name" placeholder="Object Api Name" disabled />
+                                </th>
+                            </tr>
+                            <tr class="tr_h">
+                                <th class="th th_static" data-id="label">
+                                    <input class="inp inp-1 inp_ps_filter" data-search="PermissionSets" placeholder="Search" />
+                                </th>
+                                <th class="th th_static" data-id="name">
+                                    <!-- <input class="inp inp-2" data-search="permissionset" placeholder="Search In Permissionsets"/> -->
+                                    <select class="dropdown access_dropdown">
+                                        <option class="All" value="All">All</option>
+                                        <option class="PermissionsEdit" value="PermissionsEdit">Edit</option>
+                                        <option class="PermissionsRead" value="PermissionsRead">Read</option>
+                                        <option class="PermissionsCreate" value="PermissionsCreate">Create</option>
+                                        <option class="PermissionsDelete" value="PermissionsDelete">Delete</option>
+                                        <option class="PermissionsViewAllRecords" value="PermissionsViewAllRecords">View All</option>
+                                        <option class="PermissionsModifyAllRecords" value="PermissionsModifyAllRecords">Modify All</option>
+                                    </select>
+                                </th>
+                            </tr>
+                            <tr class="tr_h">
+                                <th class="th th_field" data-id="permissionset">PermissionSets</th>
+                                <th class="th th_field" data-id="access">Access</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="tWrap__body custom-scrollbar">
+                    <table class="table">
+                        <tbody class="tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="snackbar-container">
+        <div class="snackbar">Copied.</div>
+    </div>
+    <!-- ERROR POPUP STARTS -->
+    <div class="small_popup_2 hide">
+        <div class="small_popup_2_box">
+            <div class="small_popup_2_box_heading_div">
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> &nbsp; <span class="errcode">MALFORMED_ID_1</span>
+            </div>
+            <div class="small_popup_2_box_middle_div">
+                <div class="small_popup_2_input_box">Owner ID: id value of incorrect type: 0055h0000052HMAAA2d_1</div>
+            </div>
+            <div class="small_popup_2_close_div">
+                <i class="close-icon-2 fa fa-times fa-lg" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    <!-- ERROR POPUP ENDS -->
+    <div class="spinner-div">
+        <img src="/images/loadercircleteal.svg"/>
+    </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="bulkupdate.css">
+    <title>Bulk Update</title>
+</head>
+
+<body>
+    <script type="text/javascript" src="jquery_min.js"></script>
+    <script type="text/javascript" src="font_awesome_js.js"></script>
+    <script type="text/javascript" src="bulkupdate.js"></script>
+    
+    <div class="container">
+        <div class="c-top">
+            <div class="c_top_dv c_top_dv1">
+                <select class="select c_top_dv_select_object c_top_dv_element c_scrollbar">
+                </select>
+            </div>
+            <div class="c_top_dv c_top_dv2">
+                <input class="inp c_top_dv_inp_object c_top_dv_element" disabled placeholder="Enter Object Name"/>
+            </div>
+            <div class="c_top_dv c_top_dv3">
+                <textarea class="txt c_top_dv_element c_top_dv_query" disabled></textarea>
+            </div>
+            <div class="c_top_dv c_top_dv4">
+                <button class="btn c_top_dv_element c_top_dv_btn_object" disabled>GET</button>
+            </div>
+        </div>
+        <div class="c-bottom">
+            <div class="c-b-left c_scrollbar">
+                <input class="inp c_top_dv_element search_field" placeholder="Search" disabled/>
+                <table class="table cb_left_table">
+                    <!-- <tr class="tr cb_left_table_tr">
+                        <td class="cb_left_table_td">AccountName</td>
+                    </tr> -->
+                </table>
+            </div>
+            <div class="c-b-right">
+                <div class="c_b_right_top c_scrollbar">
+                    <table class="table_1">
+                        <thead class="thead_1">
+                            <tr class="thead_1_tr">
+                                <!-- <th class="th_1 th_1_1">
+                                    Id
+                                </th>
+                                <th class="th_1 th_1_2">
+                                    Name
+                                </th>
+                                <th class="th_1 th_1_3">
+                                    Username
+                                </th>
+                                <th class="th_1 th_1_4">
+                                    Profile
+                                </th>
+                                <th class="th_1 th_1_5">
+                                    Email
+                                </th>
+                                <th class="th_1 th_1_6">
+                                    Active
+                                </th> -->
+                            </tr>
+                        </thead>
+                        <tbody class="tbody_1">
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <div class="c_b_right_bottom">
+                    <div class="bottom_c bottom_c1">
+                        <button class="btn btn_bottom btn_update" disabled>UPDATE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="snackbar-container">
+        <div class="snackbar">Copied.</div>
+    </div>
+    <div class="spinner-div">
+        <img src="/images/loadercircleteal.svg" />
+    </div>
+</body>
+
+</html>

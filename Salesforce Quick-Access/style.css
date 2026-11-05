@@ -1,0 +1,130 @@
+.warn_dv {
+  background-color: white;
+  width: 140px;
+  color: teal !important;
+  padding: 0px;
+}
+
+.hide {
+  display: none !important;
+}
+
+.saleforce_div {
+  width: 260px;
+  display: grid;
+  grid-row-gap: 5px;
+  grid-template-rows: auto auto auto;
+  color: teal;
+}
+
+.list_dv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid lightgray !important;
+}
+
+.btn {
+  outline: none !important;
+  /* border: 1px ridge rgba(202,202,202,0.57) !important; */
+  padding-top: 2px;
+  padding-bottom: 2px;
+  /* text-align: left; */
+  cursor: pointer;
+  /* border: 1px ridge rgba(202, 202, 202, 0.57); */
+  /* box-shadow: -1px -1px 8px 3px rgba(202, 202, 202, 0.57); */
+  /* border-radius: 5px; */
+  /* font-weight: 400 !important; */
+  width: 100% !important;
+  /* color: white !important; */
+  /* background-color: white; */
+  background-color: rgb(253, 250, 250);
+  color: teal;
+  /* background-color: teal !important; */
+	/* color: #5b5b5b !important; */
+  /* font-weight: 600; */
+
+  text-transform: uppercase;
+  font-size: 13px !important;
+  border: none !important;
+}
+
+.btn:active {
+  transform: translateY(2px);
+}
+
+.btn:hover {
+  /* color: rgb(3, 99, 99) !important; */
+  color: white !important;
+  background-color: teal !important;
+  letter-spacing: 1.1px;
+  /* font-weight: 600; */
+}
+
+.list_dv {
+  position: relative;
+}
+
+.border-left,
+.border-right {
+  position: absolute;
+  height: 1px;
+  width: 0;
+  /* background-color: teal; */
+  background-color: white;
+  transition: width 0.3s ease-out;
+  bottom: 0;
+}
+
+.border-left {
+  left: 0;
+}
+
+.border-right {
+  right: 0;
+}
+
+.list_dv:hover .border-left,
+.list_dv:hover .border-right {
+  width: 50%;
+}
+
+.border-left_2,
+.border-right_2 {
+  position: absolute;
+  height: 0px;
+  width: 0;
+  /* background-color: teal; */
+  background-color: white;
+  transition: width 0.3s ease-out;
+  top: 0;
+}
+
+.border-left_2 {
+  left: 0;
+}
+
+.border-right_2 {
+  right: 0;
+}
+
+.list_dv:hover .border-left_2,
+.list_dv:hover .border-right_2 {
+  width: 50%;
+}
+.sup {
+  top: -0.5em;
+  font-size: 0.6em;
+  color: red !important;
+}
+
+.btn_debugger {
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.btn_debugger:hover {
+  background-color: #0369a1 !important;
+  color: #ffffff !important;
+}

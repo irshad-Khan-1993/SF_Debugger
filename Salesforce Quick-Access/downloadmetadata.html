@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="downloadmetadata.css">
+	<link rel="stylesheet" type="text/css" href="sweetalert2min.css">
+	
+	<title>Download Metadata</title>
+</head>
+<body>
+	<script type="text/javascript" src="jquery_min.js"></script>
+	<script type="text/javascript" src="font_awesome_js.js"></script>
+    <script type="text/javascript" src="FileSavermin.js"></script>
+    <script type="text/javascript" src="jszip.min.js"></script>
+	<script type="text/javascript" src="sweetalert2allmin.js"></script>
+
+	
+	<!-- load ace and code modes -->
+	<script type="text/javascript" src="ace/ace.js"></script>
+	<script type="text/javascript" src="ace/mode/mode-apex.min.js"></script>
+	<script type="text/javascript" src="ace/mode/mode-javascript.min.js"></script>
+	<!-- load ace and code modes -->
+     
+	
+	<script type="text/javascript" src="downloadmetadata.js"></script>
+	<div class="container">
+		<div class="c">
+            <div class="parts left-part">
+                <table class="mt_table">
+                    <tr class="mt_tr">
+                        <td class="mt_td">
+							Apex Class
+						</td>
+                    </tr>
+                    <tr class="mt_tr">
+                        <td class="mt_td">
+							Apex Page
+						</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="parts right-part">
+				<div class="imagetotext-progress hide"></div>
+                <table class="m_table blur">
+                    <tr class="m_tr">
+                        <td class="m_th">
+							<input type="checkbox" class="select-all"/>
+						</td>
+                        <td class="m_th">
+							<input placeholder="Name" class="inp_th name_inp"/>
+						</td>
+                        <td class="m_th">
+							<input placeholder="Last Modified By" class="inp_th name_lastmodifyby"/>
+						</td>
+                        <td class="m_th">
+							Last Modified Date
+						</td>
+                        <td class="m_th">
+							Created By
+						</td>
+                        <td class="m_th">
+							Created Date
+						</td>
+                    </tr>
+					<tbody class="tbody">
+						<!-- <tr class="m_tr">
+							<td class="m_td">
+								
+							</td>
+						</tr> -->
+					</tbody>
+                </table>
+				<div class="spinner-div">
+					<img src="/images/loadercircleteal.svg"/>
+				</div>
+            </div>
+        </div>
+		<div class="download-div-container hide">
+			<div class="download-div ">
+				<button class="download-btn">Download</button>
+			</div>
+			<div class="open-div hide">
+				<button class="open-btn">Open</button>
+			</div>
+		</div>
+    </div>
+	<div class="small_popup_4 hide">
+			<div class="small_popup_4_box">
+				<div class="small_popup_4_box_heading_div">
+					Apex Code
+				</div>
+				<div class="code_container">
+					<div class="small_popup_4_box_middle_div textarea_code" id="editor"></div>
+				</div>
+				<div class="small_popup_4_copy_div">
+					<i class="copy-icon_4 grey-icon fa fa-files-o fa-lg" aria-hidden="true" title="Copy"></i>
+				</div>
+				<div class="small_popup_4_deploy_div">
+					<i class="deploy-icon_4 grey-icon fa fa-cog fa-lg fa-spin1" aria-hidden="true" title="Save &amp; Deploy"></i>
+				</div>
+				<div class="small_popup_4_close_div">
+					<i class="close-icon_4 fa fa-times fa-lg" aria-hidden="true"></i>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

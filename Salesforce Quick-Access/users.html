@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="users.css">
+    <title>Users</title>
+</head>
+
+<body>
+    <script type="text/javascript" src="jquery_min.js"></script>
+    <script type="text/javascript" src="font_awesome_js.js"></script>
+    <script type="text/javascript" src="users.js"></script>
+    <div class="d_outer">
+        <div class="d_top_down d_top">
+            <div class="top_c">
+                <div class="dropdown_container">
+                    <input class="dropdown_inp dropdown_inp_names" placeholder="Search Names"/>
+                </div>
+                <div class="top_userinfo_dv">
+                    <select class="cta select top_select profile_filters">
+                        <option value="No Profile Filter" selected>No Profile Filter</option>
+                    </select>
+                </div>
+                <div class="top_userinfo_dv">
+                    <select class="cta select top_select role_filters">
+                        <option value="No Roles Filter" selected>No Roles Filter</option>
+                    </select>
+                </div>
+                <div class="top_userinfo_dv">
+                    <select class="cta select top_select no_filters">
+                        <option value="No Filter" selected>No Filter</option>
+                        <option value="Active Only">Active Only</option>
+                        <option value="Inactive Only">Inactive Only</option>
+                        <option value="No Invalid Email">No Invalid Email</option>
+                        <option value="With Invalid Email">With Invalid Email</option>
+                        <option value="With Profile">With Profile</option>
+                        <option value="Without Profile">Without Profile</option>
+                        <option value="With Role">With Role</option>
+                        <option value="Without Role">Without Role</option>
+                    </select>
+                </div>
+                <div class="dropdown_container">
+                    <input class="dropdown_inp dropdown_inp_id" placeholder="Find By Id"/>
+                </div>
+                <!-- <div class="top_fetchlog_dv">
+                    <button class="cta btn top_getrecords_btn">Get Records</button>
+                </div> -->
+            </div>
+        </div>
+        <div class="d_top_down d_down">
+            <div class="down_c">
+                <table class="table_1">
+                    <thead class="thead_1">
+                        <tr class="thead_1_tr">
+                            <th class="th_1 th_1_1">
+                                Id
+                            </th>
+                            <th class="th_1 th_1_2">
+                                Name
+                            </th>
+                            <th class="th_1 th_1_3">
+                                Username
+                            </th>
+                            <th class="th_1 th_1_4">
+                                Email
+                            </th>
+                            <th class="th_1 th_1_5">
+                                Profile
+                            </th>
+                            <th class="th_1 th_1_6">
+                                Role
+                            </th>
+                            <th class="th_1 th_1_6">
+                                Active
+                            </th>
+                            <th class="th_1 th_1_6">
+                                
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody_1">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="snackbar-container">
+        <div class="snackbar">Copied.</div>
+    </div>
+    <div class="spinner-div">
+        <img src="/images/loadercircleteal.svg" />
+    </div>
+</body>
+</html>

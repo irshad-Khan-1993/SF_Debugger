@@ -1,0 +1,120 @@
+body {
+    margin-top: -8px !important;
+    background: #1E1E1E !important;
+}
+
+.c {
+    height: 100vh !important;
+    width: 100vw !important;
+}
+
+.pre {
+    color: black !important;
+}
+
+.codesection::-webkit-scrollbar {
+    height: 0px !important;
+    width: 0px !important;
+}
+
+body::-webkit-scrollbar {
+    height: 2px !important;
+    width: 5px !important;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #1E1E1E !important;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #85858557 !important;
+    border-radius: 0px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #555 !important;
+}
+
+.pre::before {
+    box-shadow: none !important;
+}
+
+.pre::after {
+    box-shadow: none !important;
+}
+
+/* Vs Code Starts */
+.language-html {
+    color: #d4d4d4 !important;
+}
+
+.token.tag {
+    color: #498fcb !important;
+}
+
+.token.attr-name {
+    color: #9ed4f1 !important;
+}
+
+.token.attr-name .token.namespace {
+    color: #9CDCFE !important;
+}
+
+.token.attr-value {
+    color: #CE9178 !important;
+}
+
+.token.property {
+    color: #CE9178 !important;
+}
+
+.token.punctuation {
+    color: #ffffff57 !important;
+}
+
+.token.punctuation.attr-equals {
+    color: #d4d4d4 !important;
+}
+
+pre[class*=language-]>code {
+    background: #1E1E1E !important;
+}
+
+.pre[class*=language-]>code {
+    /* border-left: 0px !important; */
+}
+
+.token.entity {
+    color: #d4d4d4 !important;
+    background: transparent !important;
+}
+
+.white {
+    color: #d4d4d4 !important;
+}
+
+.token.comment {
+    color: #6A9955 !important;
+}
+
+.token.namespace {
+    /* color: #498fcb !important; */
+}
+
+::selection {
+    background-color: rgba(86, 160, 234, 0.463) !important;
+    ;
+    /* Change this to your preferred background color */
+}
+
+.token.punctuation.attr-quote {
+    color: #CE9178 !important;
+}
+
+.token.punctuation.punc-curly {
+    color: #CE9178 !important;
+}
+
+.token.namespace {
+    color: #9ed4f1 !important;
+}

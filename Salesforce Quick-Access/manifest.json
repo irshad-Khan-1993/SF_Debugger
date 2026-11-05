@@ -1,0 +1,35 @@
+{
+    "author": "imtiyazimi999@gmail.com",
+    "name": "Salesforce Quick Access",
+    "version": "2.2",
+    "manifest_version": 3,
+    "description": "This is Salesforce Quick Access and Helper Extension By @Imtiyaz_Ansari",
+    "action":
+    {
+        "default_icon":
+        {
+            "32": "images/icon32.png",
+            "48": "images/icon48.png",
+            "64": "images/icon64.png",
+            "128": "images/icon128.png",
+            "256": "images/icon256.png"
+        },
+        "default_popup": "popup.html"
+    },
+    "icons":
+    {
+        "32": "images/icon32.png",
+        "48": "images/icon48.png",
+        "64": "images/icon64.png",
+        "128": "images/icon128.png",
+        "256": "images/icon256.png"
+    },
+    "permissions": ["tabs", "cookies", "scripting"],
+    "host_permissions": [
+        "https://*.salesforce.com/*",
+        "https://*.force.com/*",
+        "https://*.site.com/*",
+        "https://*.my.site.com/*",
+        "https://*.salesforce-setup.com/*"
+    ]
+}

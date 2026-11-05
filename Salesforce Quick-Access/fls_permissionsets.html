@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="fls_permissionsets.css">
+	<title>FLS - PermissionSets</title>
+</head>
+<body>
+	<script type="text/javascript" src="jquery_min.js"></script>
+	<script type="text/javascript" src="font_awesome_js.js"></script>
+    <script type="text/javascript" src="jsforce.js"></script>
+	<script type="text/javascript" src="fls_permissionsets.js"></script>
+	<div class="outer">
+        <div class="c">
+            <div class="tWrap">
+                <div class="tWrap__head">
+                    <table class="table_h noselect">
+                        <thead class="thead_h">
+                            <tr class="tr_h">
+                                <th class="th th_static" data-id="label">
+                                    <!-- Dynamic Dropdown Starts -->
+                                    <div class="dropdown_container">
+                                        <input class="dropdown_inp dropdown_inp_ps" placeholder="Permission Set"/>
+                                        <!-- value="Test_PS_1" -->
+                                        <div class="dropdown_contents dropdown_contents_ps scrollbar shadow hide">
+                                            <ul class="d_ul d_ul_ps">
+                                                <li class="d_li d_li_ps">Example Item 1</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Dynamic Dropdown Ends -->
+                                </th>
+                                <th class="th th_static" data-id="name">
+                                    <!-- Dynamic Dropdown Starts -->
+                                    <div class="dropdown_container">
+                                        <input class="dropdown_inp dropdown_inp_obj" placeholder="Object Api Name" />
+                                        <!-- value="OppLineItem__c" -->
+                                        <div class="dropdown_contents dropdown_contents_obj scrollbar shadow hide">
+                                            <ul class="d_ul d_ul_obj">
+                                                <li class="d_li d_li_obj">Example Item 1</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Dynamic Dropdown Ends -->
+                                </th>
+                            </tr>
+                            <tr class="tr_h">
+                                <th class="th th_static" data-id="label">
+                                    <input class="inp inp-1 inp_fields_filter" data-search="PermissionSets" placeholder="Search" />
+                                </th>
+                                <th class="th th_static" data-id="name">
+                                    <select class="dropdown access_dropdown">
+                                        <option class="All" value="All">All</option>
+                                        <option class="PermissionsEdit" value="PermissionsEdit">Edit</option>
+                                        <option class="PermissionsRead" value="PermissionsRead">Read</option>
+                                    </select>
+                                </th>
+                            </tr>
+                            <tr class="tr_h">
+                                <th class="th th_field" data-id="field">Field</th>
+                                <th class="th th_field" data-id="access">Access</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="tWrap__body custom-scrollbar">
+                    <table class="table">
+                        <tbody class="tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="snackbar-container">
+        <div class="snackbar">Copied.</div>
+    </div>
+    <!-- ERROR POPUP STARTS -->
+    <div class="small_popup_2 hide">
+        <div class="small_popup_2_box">
+            <div class="small_popup_2_box_heading_div">
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> &nbsp; <span class="errcode">MALFORMED_ID_1</span>
+            </div>
+            <div class="small_popup_2_box_middle_div">
+                <div class="small_popup_2_input_box">Owner ID: id value of incorrect type: 0055h0000052HMAAA2d_1</div>
+            </div>
+            <div class="small_popup_2_close_div">
+                <i class="close-icon-2 fa fa-times fa-lg" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    <!-- ERROR POPUP ENDS -->
+    <div class="spinner-div">
+        <img src="/images/loadercircleteal.svg"/>
+    </div>
+</body>
+</html>

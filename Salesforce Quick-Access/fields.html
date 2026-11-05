@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="fields.css">
+	<title>Fields</title>
+</head>
+<body>
+	<script type="text/javascript" src="jquery_min.js"></script>
+	<script type="text/javascript" src="font_awesome_js.js"></script>
+	<script type="text/javascript" src="fields.js"></script>
+	<div class="outer">
+        <div class="c">
+            <div class="tWrap">
+                <div class="tWrap__head">
+                    <table class="table_h noselect">
+                        <thead class="thead_h">
+                            <tr class="tr_h">
+                                <th class="th th_static" data-id="label">
+                                    <input class="inp inp-1" data-search="label" placeholder="Search In Labels" />
+                                </th>
+                                <th class="th th_static" data-id="name">
+                                    <input class="inp inp-2" data-search="name" placeholder="Search Api Names"/>
+                                </th>
+                                <th class="th th_static" data-id="type">
+                                    <input class="inp inp-4" data-search="type" placeholder="Search Data Types"/>
+                                </th>
+                                <th class="th th_static" data-id="custom">
+                                    <input class="inp inp-3" data-search="custom" placeholder="Search In Types"/>
+                                </th>
+                            </tr>
+                            <tr class="tr_h">
+                                <th class="th th_field" data-id="label">Label <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i></th>
+                                <th class="th th_field" data-id="name">Name <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i></th>
+                                <th class="th th_field" data-id="type">Data Type <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i></th>
+                                <th class="th th_field" data-id="custom">Type <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="tWrap__body custom-scrollbar">
+                    <table class="table noselect">
+                        <tbody class="tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="snackbar-container">
+        <div class="snackbar">Copied.</div>
+    </div>
+    <div class="spinner-div">
+        <img src="/images/loadingbars.svg"/>
+    </div>
+    <div class="popup-fixed hide">
+        <div class="popup-box-bottom">
+            <div class="sb-top">
+                Picklist Values
+            </div>
+            <div class="picklist-container custom-scrollbar">
+                <table class="bt">
+                    <thead class="bthead">
+                        <tr class="btrh">
+                            <th class="bth">
+                                Label
+                            </th>
+                            <th class="bth">
+                                Value
+                            </th>
+                            <th class="bth">
+                                Status
+                            </th>
+                            <th class="bth">
+                                Default
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="btb">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

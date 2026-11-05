@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salesforce VF & LWC Live Debugger</title>
+  <link rel="stylesheet" href="vfpage_and_lwc_debug.css">
+</head>
+<body>
+  <div id="sf-debugger-root">
+    <!-- Top Header -->
+    <header class="debugger-header">
+      <div class="header-left">
+        <span class="debugger-logo">⚡</span>
+        <div>
+          <h1 class="debugger-title">Salesforce Deep Debugger</h1>
+          <span class="site-type-badge" id="siteType">Detecting Site...</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btnOpenSourceMap" class="btn btn-secondary" title="Map Real LWC JS File to see exact source lines and variable values">📂 Map Real JS File</button>
+        <button id="btnToggleRecording" class="btn btn-record" title="Start/Pause Live Capture">
+          <span class="record-dot"></span> <span id="recordText">Recording</span>
+        </button>
+        <button id="btnClear" class="btn btn-secondary" title="Clear current session">🗑 Clear</button>
+        <button id="btnExport" class="btn btn-secondary" title="Export trace logs as JSON">💾 Export</button>
+        <button id="btnRefreshComponents" class="btn btn-secondary" title="Re-scan LWC Component Tree">🔄 Scan DOM</button>
+      </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="tab-apex-log">
+        📑 Apex-Style Debug Logs <span class="badge" id="badge-apex-log">0</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-apex">
+        🔗 Apex & Server Calls <span class="badge" id="badge-apex">0</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-flow">
+        📜 JS Code Execution & Variables <span class="badge" id="badge-flow">0</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-components">
+        🌳 LWC Component Tree <span class="badge" id="badge-components">0</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-vars">
+        👁 Live Variable Watcher <span class="badge" id="badge-vars">0</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-events">
+        🎯 Button & Event Dispatch <span class="badge" id="badge-events">0</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-vf">
+        📄 VF Remoting & Forms <span class="badge" id="badge-vf">0</span>
+      </button>
+    </nav>
+
+    <!-- Search / Filter Sub-bar -->
+    <div class="filter-strip">
+      <input type="text" id="logFilter" class="filter-input" placeholder="🔍 Filter by method, component (e.g. c-record-detail), variable or parameter...">
+      <div class="filter-toggles">
+        <label><input type="checkbox" id="chkAutoScroll" checked> Auto-Scroll</label>
+        <label><input type="checkbox" id="chkOnlyErrors"> Errors Only</label>
+      </div>
+    </div>
+
+    <!-- Main Workspace -->
+    <main class="panels-container">
+
+      <!-- 0. APEX-STYLE DEBUG LOGS PANEL (PRIMARY) -->
+      <section id="tab-apex-log" class="debug-panel active">
+        <div class="panel-meta-bar" style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="display:flex; gap:10px; align-items:center;">
+            <span style="font-weight:600; color:var(--accent-blue);">⚡ Apex-Style Execution Sequence & Statement Log</span>
+            <select id="logCategoryFilter" class="filter-select">
+              <option value="ALL">All Events (Full Timeline)</option>
+              <option value="METHOD">Methods (METHOD_ENTRY / EXIT)</option>
+              <option value="VARIABLE">Variables (VARIABLE_ASSIGNMENT)</option>
+              <option value="STATEMENT">Statements (STATEMENT_EXECUTE)</option>
+              <option value="CALLOUT">Server Calls (CALLOUT_REQUEST / RESPONSE)</option>
+              <option value="USER">User Actions & Events (CLICK / DISPATCH)</option>
+              <option value="ERROR">Errors & Exceptions</option>
+            </select>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button id="btnCopyRawLog" class="btn btn-secondary" title="Copy Apex Developer Console formatted log to clipboard">📋 Copy Apex Log</button>
+            <button id="btnToggleLogView" class="btn btn-secondary" title="Toggle between Table and Raw Text View">📄 Raw Text View</button>
+          </div>
+        </div>
+
+        <div class="split-view" id="apexLogSplitView">
+          <div class="list-column" id="apexLogList">
+            <div class="empty-hint">Waiting for user interaction or code execution... Interact with the page to stream Apex-style debug logs.</div>
+          </div>
+          <div class="detail-column" id="apexLogDetail">
+            <div class="empty-hint">Select any log line on the left to inspect exact executed code, variable state, and callout payload.</div>
+          </div>
+        </div>
+
+        <div id="apexLogRawContainer" style="display:none; height:calc(100vh - 145px); overflow:auto; padding:12px; background:#0b0e14; border-top:1px solid var(--border-color);">
+          <pre id="apexLogRawText" style="font-family:var(--font-mono); font-size:12px; color:#c9d1d9; line-height:1.6; margin:0; white-space:pre-wrap;"></pre>
+        </div>
+      </section>
+      
+      <!-- 1. APEX & SERVER CALLS PANEL -->
+      <section id="tab-apex" class="debug-panel">
+        <div class="panel-meta-bar">
+          <span>Monitors: LWC `@wire`, Imperative Apex, `/s/sfsites/aura`, GraphQL & Aura Controllers</span>
+        </div>
+        <div class="split-view">
+          <div class="list-column" id="apexList">
+            <div class="empty-hint">Waiting for Apex or server calls... Click a button or trigger an action in your Community/VF page.</div>
+          </div>
+          <div class="detail-column" id="apexDetail">
+            <div class="empty-hint">Select a request from the left to inspect parameters sent and return values received.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. EXECUTION & LINE TRACER PANEL (JS Code & Variable Inspector) -->
+      <section id="tab-flow" class="debug-panel">
+        <div class="panel-meta-bar">
+          <span>Executed JS code lines, line numbers & live variable values in each statement</span>
+        </div>
+        <div class="split-view">
+          <div class="list-column" id="flowList">
+            <div class="empty-hint">Executed functions and statements will stream here. Click any step to inspect its JS code lines and variable values.</div>
+          </div>
+          <div class="detail-column" id="flowDetail">
+            <div class="empty-hint">Select any executed step on the left to see its exact JavaScript code lines, line numbers, and variable values.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. LWC COMPONENT TREE PANEL -->
+      <section id="tab-components" class="debug-panel">
+        <div class="panel-meta-bar">
+          <span>Parent ➔ Child component hierarchy, passed @api attributes, slot contents, and internal properties</span>
+        </div>
+        <div class="split-view">
+          <div class="list-column tree-column" id="componentTree">
+            <div class="empty-hint">Click "Scan DOM" above to inspect all active LWC & Aura components on this page.</div>
+          </div>
+          <div class="detail-column" id="componentDetail">
+            <div class="empty-hint">Click any component tag in the tree to inspect its passed attributes, `@api` props, and child components.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. LIVE VARIABLE WATCHER PANEL -->
+      <section id="tab-vars" class="debug-panel">
+        <div class="panel-meta-bar">
+          <span>Live reactive variable changes & manual watch expressions without editing JS code</span>
+          <div class="watch-input-group">
+            <input type="text" id="txtWatchExpr" placeholder="Enter variable/expression to watch (e.g. recordId, this.selectedRows)...">
+            <button id="btnAddWatch" class="btn btn-sm btn-primary">+ Watch</button>
+          </div>
+        </div>
+        <div class="vars-grid">
+          <div class="vars-section">
+            <h3 class="section-title">📌 Custom Watched Expressions</h3>
+            <div id="watchedItemsList" class="item-list">
+              <div class="empty-hint">No expressions added. Type an expression above to watch its value in real time.</div>
+            </div>
+          </div>
+          <div class="vars-section">
+            <h3 class="section-title">⚡ Auto-Detected Variable Changes</h3>
+            <div id="autoVarsList" class="item-list">
+              <div class="empty-hint">Component state changes, inputs, and form updates will stream here.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. BUTTON & EVENT DISPATCH PANEL -->
+      <section id="tab-events" class="debug-panel">
+        <div class="panel-meta-bar">
+          <span>Tracks: Clicks, standard DOM events, and LWC `dispatchEvent(new CustomEvent(...))` with full `detail` payloads</span>
+        </div>
+        <div class="split-view">
+          <div class="list-column" id="eventsList">
+            <div class="empty-hint">Click buttons or trigger events on your Experience Site to see them captured here.</div>
+          </div>
+          <div class="detail-column" id="eventDetail">
+            <div class="empty-hint">Select an event to inspect its target component, parameters, and event detail payload.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. VF REMOTING & FORMS PANEL -->
+      <section id="tab-vf" class="debug-panel">
+        <div class="panel-meta-bar">
+          <span>Visualforce Remoting (`Visualforce.remoting.Manager`), ViewState size, `<apex:actionFunction>`, and AJAX postbacks</span>
+        </div>
+        <div class="split-view">
+          <div class="list-column" id="vfList">
+            <div class="empty-hint">Visualforce remoting actions and postback payloads will be displayed here.</div>
+          </div>
+          <div class="detail-column" id="vfDetail">
+            <div class="empty-hint">Select a Visualforce action to see sent arguments and callback results.</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Status Bar -->
+    <footer class="debugger-footer">
+      <span id="footerStatus">Debugger Active</span>
+      <span id="footerCounters">Apex: 0 | Components: 0 | Events: 0</span>
+    </footer>
+    <!-- Real JS File Source Mapper Modal -->
+    <div id="sourceMapperModal" class="modal-overlay" style="display:none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 style="color:#fff; font-size:14px; display:flex; align-items:center; gap:8px;">
+            <span>📂</span> Map Real LWC JavaScript File (Exact Line Numbers & Variables)
+          </h3>
+          <button id="btnCloseSourceMapper" class="btn-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p style="color:var(--text-muted); font-size:12px; margin-bottom:10px;">
+            Paste your real LWC <code>.js</code> file (from VS Code / repository). The debugger will display exact original line numbers and live variable values for every executed statement instead of browser-transpiled code.
+          </p>
+          <div style="display:flex; gap:10px; margin-bottom:10px;">
+            <input type="text" id="txtSourceCompName" class="filter-input" placeholder="Component Name (e.g. cma_summarizeCoverages)" value="cma_summarizeCoverages" style="flex:1;">
+            <button id="btnLoadPredefinedSource" class="btn btn-secondary">Load cma_summarizeCoverages.js</button>
+          </div>
+          <textarea id="txtSourceCode" class="source-textarea" placeholder="Paste your real LWC .js file content here..." rows="16"></textarea>
+        </div>
+        <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center;">
+          <span id="sourceMapperStatus" style="font-size:11px; color:var(--accent-green);"></span>
+          <div style="display:flex; gap:8px;">
+            <button id="btnSaveSourceMap" class="btn btn-primary" style="background:#0284c7; color:#fff; font-weight:600; padding:6px 16px; border-radius:4px; border:none; cursor:pointer;">💾 Save & Map File</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="vfpage_and_lwc_debug.js"></script>
+</body>
+</html>

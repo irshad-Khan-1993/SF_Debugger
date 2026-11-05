@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="records.css">
+    <title>Records</title>
+</head>
+
+<body>
+    <script type="text/javascript" src="jquery_min.js"></script>
+    <script type="text/javascript" src="font_awesome_js.js"></script>
+    <!-- load ace and code modes -->
+	<script type="text/javascript" src="ace/ace.js"></script>
+	<script type="text/javascript" src="ace/mode/mode-apex.min.js"></script>
+	<script type="text/javascript" src="ace/mode/mode-javascript.min.js"></script>
+	<!-- load ace and code modes -->
+	
+	<!-- load ace themes -->
+	<script type="text/javascript" src="ace/theme/theme-ambiance.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-chaos.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-chrome.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-cloud9_day.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-cloud9_night.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-cloud9_night_low_color.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-clouds.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-clouds_midnight.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-cobalt.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-crimson_editor.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-dawn.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-dracula.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-dreamweaver.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-eclipse.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-github.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-github_dark.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-gob.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-gruvbox.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-gruvbox_dark_hard.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-gruvbox_light_hard.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-idle_fingers.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-iplastic.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-katzenmilch.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-kr_theme.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-kuroir.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-merbivore.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-merbivore_soft.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-monokai.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-mono_industrial.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-nord_dark.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-one_dark.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-pastel_on_dark.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-solarized_dark.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-sqlserver.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-terminal.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-textmate.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-tomorrow.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-tomorrow_night.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-tomorrow_night_blue.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-tomorrow_night_bright.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-tomorrow_night_eighties.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-twilight.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-vibrant_ink.min.js"></script>
+	<script type="text/javascript" src="ace/theme/theme-xcode.min.js"></script>
+	<!-- load ace themes -->
+    <script type="text/javascript" src="Draggable.js"></script>
+	<script type="text/javascript" src="TweenMax.js"></script>
+    <script type="text/javascript" src="records.js"></script>
+    <div class="outer">
+        <div class="fixed_top_c">
+            <div class="rows">
+                <div class="row row-1">
+                    <button class="cta btn-execute edit-query">Edit Query</button>
+                </div>
+                <div class="row row-2">
+                    <select class="cta fieldType">
+                        <option value="ALL">ALL</option>
+                        <option value="CUSTOM">CUSTOM</option>
+                        <option value="EDITABLE">EDITABLE</option>
+                        <option value="STANDARD">STANDARD</option>
+                        <option value="NILLABLE">NILLABLE</option>
+                        <option value="CREATABLE">CREATABLE</option>
+                        <option value="CALCULATED">CALCULATED</option>
+                        <option value="EXTERNAL ID">EXTERNAL ID</option>
+                        <option value="NOT NILLABLE">NOT NILLABLE</option>
+                    </select>
+                </div>
+                <div class="row row-3">
+                    <button class="cta btn-execute fields-count sObjectListToApex">GENERATE CODE</button>
+                </div>
+                <div class="row row-4">
+                    <button class="cta btn-records">FETCHING...</button>
+                </div>
+                <div class="row row-5">
+                    <select class="cta fields_select">
+                        <option>LOADING...</option>
+                    </select>
+                </div>
+                <div class="row row-6">
+                    <input class="cta inp-search" placeholder="Search" />
+                </div>
+            </div>
+        </div>
+        <div class="c">
+            <div class="tWrap">
+                <div class="tWrap__body custom-scrollbar">
+                    <table class="table noselect">
+                        <thead class="thead_h">
+                            <tr class="tr_h">
+                            </tr>
+                        </thead>
+                        <tbody class="tbody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="snackbar-container">
+        <div class="snackbar">Copied.</div>
+    </div>
+    <div class="spinner-div">
+        <img src="/images/loadingbars.svg"/>
+    </div>
+    <div class="small_popup_1 hide">
+        <div class="small_popup_1_box">
+            <div class="small_popup_1_box_heading_div">
+                Get Records By Query
+            </div>
+            <div class="small_popup_1_box_middle_div">
+                <textarea class="query-inp small_popup_1_input_box" placeholder="EDIT YOUR QUERY"></textarea>
+            </div>
+            <div class="small_popup_1_box_bottom_div">
+                <div class="small_popup_1_btndv">
+                    <button class="small_popup_1_btn small_popup_1_btn1 cancel-btn">CANCEL</button>
+                </div>
+                <div class="small_popup_1_btndv">
+                    <button class="small_popup_1_btn small_popup_1_btn2 execute-btn">EXECUTE</button>
+                </div>
+            </div>
+            <div class="small_popup_1_close_div">
+                <i class="close-icon fa fa-times fa-lg" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    <div class="small_popup_2 hide">
+        <div class="small_popup_2_box">
+            <div class="small_popup_2_box_heading_div">
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> &nbsp; <span class="errcode">MALFORMED_ID_1</span>
+            </div>
+            <div class="small_popup_2_box_middle_div">
+                <div class="small_popup_2_input_box">Owner ID: id value of incorrect type: 0055h0000052HMAAA2d_1</div>
+            </div>
+            <div class="small_popup_2_close_div">
+                <i class="close-icon-2 fa fa-times fa-lg" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    <div class="small_popup_4 hide">
+        <div class="small_popup_4_box">
+            <div class="small_popup_4_box_heading_div">
+                Apex Code
+            </div>
+            <div class="code_container">
+                <div class="small_popup_4_box_middle_div textarea_code" id="editor"></div>
+            </div>
+            <div class="single_multi_dv">
+                <!-- <i class="eye_icon fa fa-minus-square-o fa-lg" aria-hidden="true"></i> -->
+            </div>
+            <div class="small_popup_4_copy_div">
+                <i class="copy-icon_4 fa fa-files-o fa-lg" aria-hidden="true"></i>
+            </div>
+            <div class="small_popup_4_close_div">
+                <i class="close-icon_4 fa fa-times fa-lg" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
